@@ -42,8 +42,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage});
 
-//Router to Register
+//Routes with Files
 app.post('/auth/register', upload.single('picture'), register);
+
+// Routes
+app.use('/auth',authRoutes);
+
+
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
