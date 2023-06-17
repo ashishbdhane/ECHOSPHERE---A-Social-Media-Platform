@@ -1,5 +1,5 @@
-import {Express} from 'express';
-import User from '../models/User';
+import express from 'express';
+import User from '../models/User.js';
 
 export const getUser = async (req, res) => {
 	try {
@@ -12,7 +12,7 @@ export const getUser = async (req, res) => {
 	}
 };
 
-export const getFriends = async (req, res) => {
+export const getUserFriends = async (req, res) => {
 	try {
 		const {id} = req.param;
 		const user = await User.findById(id);
