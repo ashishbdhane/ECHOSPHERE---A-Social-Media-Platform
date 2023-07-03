@@ -1,8 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
+import { users } from '../data';
 
 const initialState = {
 	mode: 'dark',
-	user: null,
+	user:null,
 	token: null,
 	posts: [],
 };
