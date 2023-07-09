@@ -59,7 +59,7 @@ const NavBar = () => {
 						},
 					}}
 				>
-					ECHOSPHERE
+					Echosphere
 				</Typography>
 				{isNonMobileScreens && (
 					<FlexBetween
