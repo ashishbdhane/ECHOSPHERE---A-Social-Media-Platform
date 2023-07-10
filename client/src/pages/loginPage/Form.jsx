@@ -47,7 +47,7 @@ const initialValueLogin = {
 };
 
 const Form = () => {
-	const [pageType, setPageType] = useState('register');
+	const [pageType, setPageType] = useState('login');
 	const {palette} = useTheme();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -59,13 +59,11 @@ const Form = () => {
 		// FormData inbuilt JavaScript which allows to transfer data with image
 		const formData = new FormData();
 		for (let value in values) {
-			
 			// console.log(value);
 			// console.log(values[value]);
 			formData.append(value, values[value]);
 		}
 		formData.append('picturePath', values.picture.name);
-		console.log(formData);
 		const savedUserResponse = await fetch(
 			'http://localhost:3001/auth/register',
 			{
@@ -75,37 +73,30 @@ const Form = () => {
 		);
 		const savedUser = await savedUserResponse.json();
 		onSubmitProps.resetForm();
-		
-		if(savedUser)
-		{
+
+		if (savedUser) {
 			setPageType('login');
 		}
 	};
 
-	const login = async (values,onSubmitProps) => {
-
-		const loggedInResponse = await fetch(
-			'http://localhost:3001/auth/login',
-			{
-				method: 'POST',
-				headers:{"Content-Type": "application/json"},
-				body: JSON.stringify(values),
-			}
-		);
+	const login = async (values, onSubmitProps) => {
+		const loggedInResponse = await fetch('http://localhost:3001/auth/login', {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(values),
+		});
 		const loggedIn = await loggedInResponse.json();
 		onSubmitProps.resetForm();
-		
-		if(loggedIn)
-		{
+		if (loggedIn) {
 			dispatch(
 				setLogin({
 					user: loggedIn.user,
 					token: loggedIn.token,
 				})
-			)
+			);
 			navigate('/home');
 		}
-	}
+	};
 
 	const handleFormSubmit = async (values, onSubmitProps) => {
 		if (isLogin) await login(values, onSubmitProps);
@@ -239,7 +230,7 @@ const Form = () => {
 
 						<TextField
 							label="Password"
-							type='password'
+							type="password"
 							onBlur={handleBlur}
 							onChange={handleChange}
 							value={values.password}

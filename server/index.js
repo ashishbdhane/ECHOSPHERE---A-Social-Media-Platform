@@ -13,12 +13,10 @@ import postRoutes from './routes/posts.js';
 
 import {fileURLToPath} from 'url';
 
-import {register} from './controllers/auth.js';
+import {login, register} from './controllers/auth.js';
 import {createPost} from './controllers/posts.js';
 import {verifyToken} from './middleware/auth.js';
 import {users, posts} from './data/index.js';
-import User from './models/User.js';
-import Post from './models/Post.js';
 
 //  Configurations
 const __filename = fileURLToPath(import.meta.url);
@@ -36,17 +34,17 @@ app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}));
 app.use(morgan('common'));
 app.use(express.json({limit: '30mb', extended: true}));
 app.use(bodyParser.json({limit: '30mb', extended: true}));
-
+app.use(cors());
 app.use('/assets', express.static(path.join(__dirname, '/public/assets')));
 
 //File Storage
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb('null', 'public/assets');
+		cb(null, 'public/assets');
 	},
 	filename: function (req, file, cb) {
-		cb('null', file.originalname);
+		cb(null, file.originalname);
 	},
 });
 
@@ -58,6 +56,7 @@ app.post('/posts', verifyToken, upload.single('picture'), createPost);
 
 // Routes
 app.use('/auth', authRoutes);
+// app.post('/auth/login',login)
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 
