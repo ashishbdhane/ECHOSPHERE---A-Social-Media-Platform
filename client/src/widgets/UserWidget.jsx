@@ -28,7 +28,6 @@ const UserWidget = ({userId, picturePath}) => {
 			headers: {Authorization: `Bearer ${token}`},
 		});
 		const data = await response.json();
-		console.log(data);
 		setUser(data);
 	};
 
@@ -37,7 +36,6 @@ const UserWidget = ({userId, picturePath}) => {
 
 	useEffect(() => {
 		getUser();
-		console.log(user);
 		
 	}, []); //eslint-disable-line
 
@@ -79,7 +77,7 @@ const UserWidget = ({userId, picturePath}) => {
 						>
 							{firstName} {lastName}
 						</Typography>
-						<Typography color={medium}>{friends}</Typography>
+						<Typography color={medium}>{friends.length} Friends</Typography>
 					</Box>
 				</FlexBetween>
 				<ManageAccountsOutlined />

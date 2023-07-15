@@ -29,7 +29,7 @@ import FlexBetween from '../../components/FlexBetween';
 
 const NavBar = () => {
 	const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
-	const dispactch = useDispatch();
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const user = useSelector((state) => state.user);
 	const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
@@ -77,7 +77,7 @@ const NavBar = () => {
         </FlexBetween>
 				{isNonMobileScreens ? (
 					<FlexBetween gap="2rem">
-						<IconButton onClick={() => dispactch(setMode())}>
+						<IconButton onClick={() => dispatch(setMode())}>
 							{theme.palette.mode === 'dark' ? (
 								<DarkMode sx={{fontSize: '25px'}} />
 							) : (
@@ -118,7 +118,7 @@ const NavBar = () => {
 								<MenuItem value={fullName}>
 									<Typography>{fullName}</Typography>
 								</MenuItem>
-								<MenuItem onClick={() => dispactch(setLogout())}>
+								<MenuItem onClick={() => dispatch(setLogout())}>
 									Log Out
 								</MenuItem>
 							</Select>
@@ -153,7 +153,7 @@ const NavBar = () => {
 						</IconButton>
 					</Box>
           <FlexBetween display='flex' flexDirection='column' justifyContent='center' alignItems='center' gap="3rem">
-						<IconButton onClick={() => dispactch(setMode())}>
+						<IconButton onClick={() => dispatch(setMode())}>
 							{theme.palette.mode === 'dark' ? (
 								<DarkMode sx={{fontSize: '25px'}} />
 							) : (
@@ -194,7 +194,7 @@ const NavBar = () => {
 								<MenuItem value={fullName}>
 									<Typography>{fullName}</Typography>
 								</MenuItem>
-								<MenuItem onClick={() => dispactch(setLogout())}>
+								<MenuItem onClick={() => dispatch(setLogout())}>
 									Log Out
 								</MenuItem>
 							</Select>
