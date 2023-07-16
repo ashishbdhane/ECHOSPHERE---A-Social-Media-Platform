@@ -18,7 +18,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "devStart": "nodemon index.js"
+    "devStart": "nodemon index.js",
+    "bulid": "npm i",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
