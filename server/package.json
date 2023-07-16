@@ -19,7 +19,7 @@
   "type": "module",
   "scripts": {
     "devStart": "nodemon index.js",
-    "bulid": "npm i",
+    "build": "npm i",
     "start": "node index.js"
   },
   "keywords": [],
