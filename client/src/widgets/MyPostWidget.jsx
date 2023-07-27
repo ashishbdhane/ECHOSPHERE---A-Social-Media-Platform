@@ -25,6 +25,7 @@ import WidgetWrapper from '../components/WidgetWrapper';
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {setPosts} from '../state';
+import BaseLink from '../data/BaseLink';
 
 const MyPostWidget = ({picturePath}) => {
 	const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const MyPostWidget = ({picturePath}) => {
 	const mediumMain = palette.neutral.mediumMain;
 	const medium = palette.neutral.medium;
 
+
 	const handlePost = async () => {
 		const formData = new FormData();
 		formData.append('userId', _id);
@@ -46,7 +48,7 @@ const MyPostWidget = ({picturePath}) => {
 			formData.append('picture', image);
 			formData.append('picturePath', image.name);
 		}
-		const response = await fetch('http://localhost:3001/posts', {
+		const response = await fetch(`${BaseLink}/posts`, {
 			method: 'POST',
 			headers: {Authorization: `Bearer ${token}`},
 			body: formData,
