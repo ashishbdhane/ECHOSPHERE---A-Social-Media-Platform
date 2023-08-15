@@ -21,7 +21,7 @@ const LoginPage = () => {
                 backgroundColor={alt}
 			>
                 <Typography fontWeight='500' variant='h5' sx={{mb: '1.5rem'}} >
-                    Welcome to Echosphere!Your Echo, Your Story, Your Social Realm!!
+                    Welcome to Echosphere! Your Echo, Your Story, Your Social Realm!!
                 </Typography>
 				<Form/>
             </Box>
